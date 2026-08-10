@@ -1,0 +1,16 @@
+换回CUDA：
+
+set MINERU_DEVICE=gpu
+
+方案 1：纯 CPU 模式（推荐先试这个）
+bash
+set MINERU_DEVICE=cpu
+mineru -p "你的PDF" -o "输出" --backend pipeline
+
+mineru -p E:\AI_Study\pdf\hak180产品安全手册.pdf -o E:\AI_Study\pdf\output --backend pipeline
+
+E:\AI_Study\pdf\联想海豚用户手册.pdf    E:\AI_Study\pdf\output
+
+"E:\AI_Study\pdf\AI-Agents-in-Depth-zh-CN.pdf"
+
+"E:\AI_Study\pdf\hak180产品安全手册.pdf"

@@ -65,6 +65,21 @@ class NodeItemNameRecognition(BaseNode):
         # 打印识别结果
         self.logger.info(f"--- 识别完成: {item_name} ---")
 
+        #添加state（视情况删除）
+        import json
+        from pathlib import Path
+
+        # 确保保存目录存在
+        save_dir = Path("./temp")
+        save_dir.mkdir(exist_ok=True)
+
+        # 保存完整的 state 到 JSON 文件
+        save_path = save_dir / f"{state.get('file_title', 'unknown')}_state.json"
+        with open(save_path, "w", encoding="utf-8") as f:
+            json.dump(state, f, ensure_ascii=False, indent=2)
+
+        self.logger.info(f"状态已保存到: {save_path}")
+
         return state
 
     def _step_1_get_inputs(self, state: ImportGraphState) -> Tuple[str, List[Dict]]:
@@ -388,14 +403,14 @@ if __name__ == "__main__":
 
     setup_logging()
 
-    md_path = r"E:\AI_Study\pdf\output\HUAWEI MateBook B3-420 用户指南-(NDZ,Windows11_01,zh-cn)\chunks.json"
+    md_path = r"E:\AI_Study\pdf\output\hak180产品安全手册\auto\chunks.json"
     with open(md_path, "r", encoding="utf-8") as f:
         chunks_json = f.read()
 
     chunks = json.loads(chunks_json)
     init_state = {
         "chunks": chunks,
-        "file_title": "HUAWEI MateBook B3-420 用户指南-(NDZ,Windows11_01,zh-cn)"
+        "file_title": "hak180产品安全手册"
     }
 
     # 执行核心处理流程

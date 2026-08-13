@@ -384,7 +384,7 @@ if __name__ == "__main__":
     init_state = {
         "md_path": md_path,
         "md_content": md_content,
-        "file_title": "AI-Agents-in-Depth-zh-CN"
+        "file_title": "HUAWEI MateBook B3-420 用户指南-(NDZ,Windows11_01,zh-cn)"
     }
     # 执行文档切分节点
     node_document_split = NodeDocumentSplit()

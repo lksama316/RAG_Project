@@ -142,7 +142,7 @@ class KBQueryWorkflow:
 if __name__ == "__main__":
 
     # 定义初始状态
-    init_state = {"original_query": "如何使用万用表测量电压？"}
+    init_state = {"original_query": "如何给 MateBook B3-420 充电？"}
 
     workflow = KBQueryWorkflow()
     # final_state = workflow.run(init_state)

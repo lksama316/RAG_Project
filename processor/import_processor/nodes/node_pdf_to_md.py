@@ -243,9 +243,10 @@ if __name__ == "__main__":
     setup_logging()
 
     init_state = {
-        "pdf_path": r"E:\AI_Study\智库项目\掌柜智库课件0525\掌柜智库课件0525\2.资料\04-设备手册汇总\doc\H3C LA2608室内无线网关 用户手册-6W100-整本手册.pdf",
-        "file_dir": r"E:\AI_Study\智库项目\掌柜智库课件0525\掌柜智库课件0525\2.资料\04-设备手册汇总\output"
+        "pdf_path": r"E:\AI_Study\pdf\HUAWEI MateBook B3-420 用户指南-(NDZ,Windows11_01,zh-cn).pdf",
+        "file_dir": r"E:\AI_Study\pdf\output"
     }
+
     node_pdf_to_md = NodePDFToMD()
     result = node_pdf_to_md(init_state)
 

@@ -436,7 +436,7 @@ if __name__ == "__main__":
 
     setup_logging()
 
-    md_path = r"E:\AI_Study\pdf\output\hak180产品安全手册\auto\hak180产品安全手册.md"
+    md_path = r"E:\AI_Study\pdf\output\HUAWEI MateBook B3-420 用户指南-(NDZ,Windows11_01,zh-cn)\HUAWEI MateBook B3-420 用户指南-(NDZ,Windows11_01,zh-cn).md"
     with open(md_path, "r", encoding="utf-8") as f:
         md_content = f.read()
 

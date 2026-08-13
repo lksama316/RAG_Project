@@ -32,3 +32,15 @@ except Exception as e:
 
 def get_minio_client():
     return minio_client
+
+if __name__ == "__main__":
+    # 测试 MinIO 客户端
+    client = get_minio_client()
+    if client:
+        print("MinIO client initialized successfully.")
+        # 列出所有存储桶
+        buckets = client.list_buckets()
+        for bucket in buckets:
+            print(f"Bucket: {bucket.name}, Created on: {bucket.creation_date}")
+    else:
+        print("Failed to initialize MinIO client.")

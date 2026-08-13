@@ -12,6 +12,7 @@ class LLMConfig:
     api_key : str
     vl_model: str
     llm_model: str
+    item_model: str
     llm_temperature: float
 
 lm_config = LLMConfig(
@@ -19,6 +20,7 @@ lm_config = LLMConfig(
     api_key=os.getenv("OPENAI_API_KEY"),
     vl_model=os.getenv("VL_MODEL"),
     llm_model=os.getenv("LLM_DEFAULT_MODEL"),
+    item_model=os.getenv("ITEM_MODEL"),
     llm_temperature=float(os.getenv("LLM_DEFAULT_TEMPERATURE"))
 )
 
@@ -29,3 +31,4 @@ llm_model = lm_config.llm_model
 base_url = lm_config.base_url
 api_key = lm_config.api_key
 llm_temperature = lm_config.llm_temperature
+item_model = lm_config.item_model

@@ -61,7 +61,7 @@ if __name__ == "__main__":
     setup_logging()
 
     init_state = {"import_file_path": r"E:\AI_Study\pdf\hak180使用说明书.pdf"}
-node_entry = NodeEntry()
-result = node_entry(init_state)
+    node_entry = NodeEntry()
+    result = node_entry(init_state)
 
-logging.getLogger().info(json.dumps(result, ensure_ascii=False, indent=4))
+    logging.getLogger().info(json.dumps(result, ensure_ascii=False, indent=4))

@@ -99,7 +99,7 @@ class KBImportWorkflow:
         if stream:
             #流式输出:
             #return self.graph.stream(state, stream_mode="values")
-            return self.graph.invoke(state)
+            return self.graph.stream(state)
         else:
             return self.graph.invoke(state)
 
@@ -112,13 +112,13 @@ if __name__ == "__main__":
     init_state = {"import_file_path": r"E:\AI_Study\智库项目\掌柜智库课件0525\掌柜智库课件0525\2.资料\04-设备手册汇总\doc\H3C LA2608室内无线网关 用户手册-6W100-整本手册.pdf"}
     workflow = KBImportWorkflow()
 
-# 方式1：实例化后使用（推荐方式，可复用）
-for event in workflow.run(init_state, stream=True):
-    print(f"state: {event}")
+    # 方式1：实例化后使用（推荐方式，可复用）
+    for event in workflow.run(init_state, stream=True):
+        print(f"state: {event}")
 
-# 方式2：非流式执行
-#final_state = workflow.run(init_state, stream=False)
-#print(json.dumps(final_state, ensure_ascii=False, indent=4))
+    # 方式2：非流式执行
+    #final_state = workflow.run(init_state, stream=False)
+    #print(json.dumps(final_state, ensure_ascii=False, indent=4))
 
-# 打印编译后的图结构
-workflow.graph.get_graph().print_ascii()
+    # 打印编译后的图结构
+    workflow.graph.get_graph().print_ascii()

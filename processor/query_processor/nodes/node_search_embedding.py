@@ -53,7 +53,7 @@ class NodeSearchEmbedding(NodeBase):
                  #quoted = ", ".join(f'"{v}"' for v in item_names)
                  #expr = f"item_name in [{quoted}]"
                  # 'item_name in ["BrotherHAK-180烫金机","BrotherHAK180烫金机"]'
-            	 expr = f'item_name in {item_names}'
+                 expr = f'item_name in {item_names}'
                  logger.info(f"过滤条件: {expr}")
              else:
                  logger.info("未指定商品名过滤，将全库检索")

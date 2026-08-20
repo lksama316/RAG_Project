@@ -387,8 +387,10 @@ class NodeItemNameConfirm(NodeBase):
             state["item_names"] = []
             return state
 
-        # 分支C：无确认商品名，且无候选商品名（无匹配结果，需用户重新提供）
-        state["answer"] = "抱歉，未找到相关产品，请提供准确型号以便我为您查询。"
+        # Branch C: no confirmed/ambiguous product found.
+        # Instead of rejecting, clear filters and fall back to full-KB retrieval,
+        # so general/non-product documents (e.g. concept intros) can still be answered.
+        state["answer"] = ""
         state["item_names"] = []
         return state
 

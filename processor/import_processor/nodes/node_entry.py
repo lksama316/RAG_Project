@@ -47,6 +47,9 @@ class NodeEntry(BaseNode):
         elif import_file_path_obj.suffix == ".md":
             state["is_md_read_enabled"] = True
             state["md_path"] = import_file_path
+            # read md file content for downstream nodes (node_md_img / node_document_split)
+            with open(import_file_path_obj, "r", encoding="utf-8") as f:
+                state["md_content"] = f.read()
         else:
             raise ValidationError(message=f"该文件的后缀格式{import_file_path_obj.suffix}不支持")
 

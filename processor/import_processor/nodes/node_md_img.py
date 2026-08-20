@@ -94,7 +94,11 @@ class NodeMDImg(BaseNode):
             raise FileProcessingError(message=f"MD文件{md_path_obj.name}不存在")
 
         # 4、获取md_content
-        md_content = state["md_content"]
+        md_content = state.get("md_content")
+        if md_content is None:
+            # fallback: read md content from file when missing in state
+            with open(md_path_obj, "r", encoding="utf-8") as f:
+                md_content = f.read()
 
         # 5、组装图片文件夹路径：图片文件夹固定为MD文件同级的images目录
         images_dir = md_path_obj.parent / "images"

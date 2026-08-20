@@ -21,3 +21,7 @@ class CustomJSONEncoder(json.JSONEncoder):
 
 def format_json(data: Any, indent: int = 4, ensure_ascii: bool = False) -> str:
     return json.dumps(data, indent=indent, ensure_ascii=ensure_ascii, cls=CustomJSONEncoder)
+
+
+# 向下兼容，提供与 format_json 功能完全相同的 serialize_json
+serialize_json = format_json

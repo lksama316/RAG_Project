@@ -41,31 +41,31 @@ class NodeBGEEmbedding(BaseNode):
         # 步骤3：更新全局状态，将带向量的chunks回传下游
         state['chunks'] = output_data
 
-        import json
-        from pathlib import Path
-
-        # 1. 获取 file_title（优先从 state，其次从 chunks 中提取）
-        file_title = state.get("file_title")
-        if not file_title:
-            chunks = state.get("chunks")
-            if chunks and isinstance(chunks, list) and len(chunks) > 0:
-                file_title = chunks[0].get("file_title", "unknown")
-            else:
-                file_title = "unknown"
-
-        # 2. 创建保存目录
-        save_dir = Path("./temp")
-        save_dir.mkdir(exist_ok=True)
-
-        # 3. 构造保存路径
-        save_path = save_dir / f"{file_title}_state_vector.json"
-
-        # 4. 保存完整 state
-        with open(save_path, "w", encoding="utf-8") as f:
-            json.dump(state, f, ensure_ascii=False, indent=2)
-
-        self.logger.info(f"带向量的状态已保存到: {save_path}")
-        # ============================================
+        # import json
+        # from pathlib import Path
+        #
+        # # 1. 获取 file_title（优先从 state，其次从 chunks 中提取）
+        # file_title = state.get("file_title")
+        # if not file_title:
+        #     chunks = state.get("chunks")
+        #     if chunks and isinstance(chunks, list) and len(chunks) > 0:
+        #         file_title = chunks[0].get("file_title", "unknown")
+        #     else:
+        #         file_title = "unknown"
+        #
+        # # 2. 创建保存目录
+        # save_dir = Path("./temp")
+        # save_dir.mkdir(exist_ok=True)
+        #
+        # # 3. 构造保存路径
+        # save_path = save_dir / f"{file_title}_state_vector.json"
+        #
+        # # 4. 保存完整 state
+        # with open(save_path, "w", encoding="utf-8") as f:
+        #     json.dump(state, f, ensure_ascii=False, indent=2)
+        #
+        # self.logger.info(f"带向量的状态已保存到: {save_path}")
+        
         return state
 
 

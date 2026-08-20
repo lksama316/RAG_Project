@@ -3,7 +3,8 @@ import json
 import logging
 from pathlib import Path
 
-from processor.import_processor.base import BaseNode, setup_logging
+from processor.import_processor.base import BaseNode
+from processor.import_processor.base import setup_logging
 from processor.import_processor.exceptions import ValidationError, StateFieldError, FileProcessingError
 from processor.import_processor.state import ImportGraphState
 
@@ -54,3 +55,13 @@ class NodeEntry(BaseNode):
 
         # 5. 返回state
         return state
+
+
+if __name__ == "__main__":
+    setup_logging()
+
+    init_state = {"import_file_path": r"E:\AI_Study\pdf\hak180使用说明书.pdf"}
+node_entry = NodeEntry()
+result = node_entry(init_state)
+
+logging.getLogger().info(json.dumps(result, ensure_ascii=False, indent=4))

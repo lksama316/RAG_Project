@@ -61,24 +61,20 @@ class NodeItemNameRecognition(BaseNode):
         # 步骤6：将数据存入Milvus向量数据库
         self._step_6_save_to_milvus(state, file_title, item_name, dense_vector, sparse_vector)
 
-
-        # 打印识别结果
-        self.logger.info(f"--- 识别完成: {item_name} ---")
-
-        #添加state（视情况删除）
-        import json
-        from pathlib import Path
-
-        # 确保保存目录存在
-        save_dir = Path("./temp")
-        save_dir.mkdir(exist_ok=True)
-
-        # 保存完整的 state 到 JSON 文件
-        save_path = save_dir / f"{state.get('file_title', 'unknown')}_state.json"
-        with open(save_path, "w", encoding="utf-8") as f:
-            json.dump(state, f, ensure_ascii=False, indent=2)
-
-        self.logger.info(f"状态已保存到: {save_path}")
+        # #添加state（视情况删除）
+        # import json
+        # from pathlib import Path
+        #
+        # # 确保保存目录存在
+        # save_dir = Path("./temp")
+        # save_dir.mkdir(exist_ok=True)
+        #
+        # # 保存完整的 state 到 JSON 文件
+        # save_path = save_dir / f"{state.get('file_title', 'unknown')}_state.json"
+        # with open(save_path, "w", encoding="utf-8") as f:
+        #     json.dump(state, f, ensure_ascii=False, indent=2)
+        #
+        # self.logger.info(f"状态已保存到: {save_path}")
 
         return state
 

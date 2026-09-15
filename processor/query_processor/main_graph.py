@@ -134,7 +134,10 @@ class KBQueryWorkflow:
 if __name__ == "__main__":
 
     # 定义初始状态
-    init_state = { "original_query": "如何使用万用表测量电压？"}
+    init_state = {
+        "session_id": "session_001",
+        "original_query": "如何使用万用表测量电压？"
+    }
 
     workflow = KBQueryWorkflow()
     # final_state = workflow.run(init_state)

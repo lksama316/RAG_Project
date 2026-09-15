@@ -126,19 +126,23 @@ class NodeDocumentSplit(BaseNode):
         # 4、逐行遍历，识别标题和普通行以及代码快
         for line in lines:
             stripped_line = line.strip()
-            # 4.1 识别代码块边界 ```、~~~、````、~~~~ 等（至少 3 个连续字符）
-            # 使用正则匹配：行首到行尾只有 ` 或 ~ 字符，且数量>=3
-            code_block_marker_match = re.match(r'^(`{3,}|~{3,})$', stripped_line)
+            # 使用正则匹配代码围栏及可选语言标记，例如 ```python 或 ~~~json。
+            code_block_marker_match = re.match(r'^(`{3,}|~{3,})(.*)$', stripped_line)
             if code_block_marker_match:
                 marker = code_block_marker_match.group(1)
-                marker_len = len(marker)  # 获取标记长度
+                marker_suffix = code_block_marker_match.group(2)
 
                 if not in_code_block:
-                    # 进入代码块，记录开始的标记特征
+                    # 进入代码块，记录开始围栏的字符和长度。
                     in_code_block = True
                     code_block_start_marker = marker
-                elif in_code_block and stripped_line == code_block_start_marker:
-                    # 遇到匹配的结束标记（相同字符且相同长度）
+                elif (
+                    in_code_block
+                    and marker[0] == code_block_start_marker[0]
+                    and len(marker) >= len(code_block_start_marker)
+                    and not marker_suffix.strip()
+                ):
+                    # 结束围栏必须与开始围栏同字符，长度不短于开始围栏，且无语言标记。
                     in_code_block = False
                     code_block_start_marker = None
 
